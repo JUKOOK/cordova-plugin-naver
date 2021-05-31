@@ -33,9 +33,6 @@
     [[NaverThirdPartyLoginConnection getSharedInstance] setConsumerKey:consumerKey];
     [[NaverThirdPartyLoginConnection getSharedInstance] setConsumerSecret:consumerSecret];
     [[NaverThirdPartyLoginConnection getSharedInstance] setAppName:appName];
-    
-    
-
 }
 
 
@@ -97,7 +94,7 @@
 }
 
 
-#pragma mark - NaverThirdPartyLoginConnectionDelegate Utility methods
+#pragma mark - NaverThirdPartyLoginConnectionDelegate
 
 - (void)oauth20ConnectionDidFinishRequestACTokenWithAuthCode {
     NSLog(@"oauth20ConnectionDidFinishRequestACTokenWithAuthCode");

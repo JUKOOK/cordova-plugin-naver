@@ -1,6 +1,6 @@
 {
   "name": "cordova-plugin-naver",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Naver Cordova Plugin",
   "cordova": {
     "id": "cordova-plugin-naver",
@@ -13,16 +13,16 @@
     "ecosystem:cordova",
     "cordova-android"
   ],
-  "author": "GHyeok",
+  "author": "JUKOOK",
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/GwonHyeok/cordova-plugin-naver.git"
+    "url": "git+https://github.com/JUKOOK/cordova-plugin-naver.git"
   },
   "bugs": {
-    "url": "https://github.com/GwonHyeok/cordova-plugin-naver/issues"
+    "url": "https://github.com/JUKOOK/cordova-plugin-naver/issues"
   },
-  "homepage": "https://github.com/GwonHyeok/cordova-plugin-naver#readme",
+  "homepage": "https://github.com/JUKOOK/cordova-plugin-naver#readme",
   "engines": [
     {
       "name": "cordova-android",

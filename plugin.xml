@@ -71,6 +71,7 @@
         <config-file parent="/*" target="config.xml">
             <feature name="Naver">
                 <param name="ios-package" value="NaverPlugin"/>
+                <param name="onload" value="true" />
             </feature>
         </config-file>
 
