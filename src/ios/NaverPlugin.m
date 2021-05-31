@@ -1,4 +1,5 @@
 #import "NaverPlugin.h"
+#import <objc/runtime.h>
 
 @interface NaverPlugin ()
 
@@ -30,8 +31,8 @@
     [[NaverThirdPartyLoginConnection getSharedInstance] setConsumerKey:consumerKey];
     [[NaverThirdPartyLoginConnection getSharedInstance] setConsumerSecret:consumerSecret];
     [[NaverThirdPartyLoginConnection getSharedInstance] setAppName:appName];
-
 }
+
 
 #pragma mark - Cordova commands
 
@@ -140,13 +141,8 @@
     }] resume];
 }
 
-#pragma mark - Utility methods
 
-- (void)presentWebviewControllerWithRequest:(NSURLRequest *)urlRequest {
-    NLoginThirdPartyOAuth20InAppBrowserViewController *inAppBrowserViewController = [[NLoginThirdPartyOAuth20InAppBrowserViewController alloc] initWithRequest:urlRequest];
-    inAppBrowserViewController.parentOrientation = (UIInterfaceOrientation) [[UIDevice currentDevice] orientation];
-    [[self viewController] presentViewController:inAppBrowserViewController animated:NO completion:nil];
-}
+#pragma mark - Utility methods
 
 - (void)exchangeKey:(NSString *)aKey withKey:(NSString *)aNewKey inMutableDictionary:(NSMutableDictionary *)aDict {
     if (![aKey isEqualToString:aNewKey]) {
@@ -167,11 +163,6 @@
 
 
 #pragma mark - NaverThirdPartyLoginConnectionDelegate
-
-- (void)oauth20ConnectionDidOpenInAppBrowserForOAuth:(NSURLRequest *)request {
-    NSLog(@"oauth20ConnectionDidOpenInAppBrowserForOAuth");
-    [self presentWebviewControllerWithRequest:request];
-}
 
 - (void)oauth20ConnectionDidFinishRequestACTokenWithAuthCode {
     NSLog(@"oauth20ConnectionDidFinishRequestACTokenWithAuthCode");
@@ -227,6 +218,20 @@
     [self.commandDelegate sendPluginResult:pluginResult callbackId:self.loginCallbackId];
 
     self.loginCallbackId = nil;
+}
+
+- (void)oauth20Connection:(NaverThirdPartyLoginConnection *)oauthConnection didFailAuthorizationWithRecieveType:(THIRDPARTYLOGIN_RECEIVE_TYPE)recieveType
+{
+    NSLog(@"NaverApp login fail handler");
+    CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:[NSString stringWithFormat:@"%u", (THIRDPARTYLOGIN_RECEIVE_TYPE)recieveType]];
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:self.loginCallbackId];
+
+    self.loginCallbackId = nil;
+}
+
+- (void)oauth20Connection:(NaverThirdPartyLoginConnection *)oauthConnection didFinishAuthorizationWithResult:(THIRDPARTYLOGIN_RECEIVE_TYPE)recieveType
+{
+    NSLog(@"Getting auth code from NaverApp success!");
 }
 
 @end
