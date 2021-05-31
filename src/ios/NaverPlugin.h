@@ -1,8 +1,7 @@
-#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 #import <Cordova/CDVPlugin.h>
 #import <NaverThirdPartyLogin/NaverThirdPartyLogin.h>
 #import <NaverThirdPartyLogin/NaverThirdPartyLoginConnection.h>
-#import "AppDelegate.h"
 
 @interface NaverPlugin : CDVPlugin <NaverThirdPartyLoginConnectionDelegate> {
 }
