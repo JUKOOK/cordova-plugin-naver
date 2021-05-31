@@ -108,17 +108,21 @@
                 <dict>
                     <key>naver.net</key>
                     <dict>
-                        <key>NSIncludesSubdomains</key>
+                        <key>NSExceptionAllowsInsecureHTTPLoads</key>
                         <true/>
                         <key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
                         <false/>
+                        <key>NSIncludesSubdomains</key>
+                        <true/>
                     </dict>
                     <key>naver.com</key>
                     <dict>
-                        <key>NSIncludesSubdomains</key>
+                        <key>NSExceptionAllowsInsecureHTTPLoads</key>
                         <true/>
                         <key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
                         <false/>
+                        <key>NSIncludesSubdomains</key>
+                        <true/>
                     </dict>
                 </dict>
             </dict>
@@ -130,14 +134,16 @@
                 <string>naversearchthirdlogin</string>
             </array>
         </config-file>
-
-        <!-- Naver Framework -->
-        <header-file src="src/ios/libs/NaverThirdPartyConstantsForApp.h"/>
-        <header-file src="src/ios/libs/NaverThirdPartyLoginConnection.h"/>
-        <header-file src="src/ios/libs/NLoginThirdPartyOAuth20InAppBrowserViewController.h"/>
-        <source-file src="src/ios/libs/NLoginThirdPartyOAuth20InAppBrowserViewController.m"/>
-        <source-file src="src/ios/libs/libNaverLogin.a" framework="true"/>
-        <resource-file src="src/ios/libs/NaverAuth.bundle"/>
+        
+        <!-- Pods : naveridlogin-sdk-ios -->
+        <podspec>
+            <config>
+                <source url="https://cdn.cocoapods.org/"/>
+            </config>
+            <pods>
+                <pod name="naveridlogin-sdk-ios" spec="~> 4.1.2" />
+            </pods>
+        </podspec>
 
         <!-- 소스  -->
         <header-file src="src/ios/NaverPlugin.h"/>
