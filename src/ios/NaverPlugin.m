@@ -220,16 +220,16 @@
     self.loginCallbackId = nil;
 }
 
-- (void)oauth20Connection:(NaverThirdPartyLoginConnection *)oauthConnection didFailAuthorizationWithRecieveType:(THIRDPARTYLOGIN_RECEIVE_TYPE)recieveType
+- (void)oauth20Connection:(NaverThirdPartyLoginConnection *)oauthConnection didFailAuthorizationWithRecieveType:(THIRDPARTYLOGIN_RECEIVE_TYPE)receiveType
 {
     NSLog(@"NaverApp login fail handler");
-    CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:[NSString stringWithFormat:@"%u", (THIRDPARTYLOGIN_RECEIVE_TYPE)recieveType]];
+    CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:[NSString stringWithFormat:@"%u", (THIRDPARTYLOGIN_RECEIVE_TYPE)receiveType]];
     [self.commandDelegate sendPluginResult:pluginResult callbackId:self.loginCallbackId];
 
     self.loginCallbackId = nil;
 }
 
-- (void)oauth20Connection:(NaverThirdPartyLoginConnection *)oauthConnection didFinishAuthorizationWithResult:(THIRDPARTYLOGIN_RECEIVE_TYPE)recieveType
+- (void)oauth20Connection:(NaverThirdPartyLoginConnection *)oauthConnection didFinishAuthorizationWithResult:(THIRDPARTYLOGIN_RECEIVE_TYPE)receiveType
 {
     NSLog(@"Getting auth code from NaverApp success!");
 }

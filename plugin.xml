@@ -97,7 +97,7 @@
                 <dict>
                     <key>CFBundleURLSchemes</key>
                     <array>
-                        <string>naverplugin</string>
+                        <string>naver$OAUTH_CLIENT_ID</string>
                     </array>
                 </dict>
             </array>
@@ -135,8 +135,10 @@
                 <string>naversearchthirdlogin</string>
             </array>
         </config-file>
+
+        <header-file src="src/ios/NaverPlugin.h"/>
+        <source-file src="src/ios/NaverPlugin.m"/>
         
-        <!-- Pods : naveridlogin-sdk-ios -->
         <podspec>
             <config>
                 <source url="https://cdn.cocoapods.org/"/>
@@ -145,10 +147,5 @@
                 <pod name="naveridlogin-sdk-ios" spec="~> 4.1.2" />
             </pods>
         </podspec>
-
-        <!-- 소스  -->
-        <header-file src="src/ios/NaverPlugin.h"/>
-        <source-file src="src/ios/NaverPlugin.m"/>
     </platform>
-
 </plugin>
